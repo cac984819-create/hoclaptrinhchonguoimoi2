@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Logic - Kỹ năng Lập Trình</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --js-yellow: #f7df1e; --dark: #323330; --bg: #fffdf0; }
+        body { margin: 0; padding-top: 70px; font-family: 'Inter', sans-serif; background: var(--bg); line-height: 1.8; }
+        
+        .navbar { position: fixed; top: 0; width: 100%; height: 70px; background: #fff; box-shadow: 0 2px 15px rgba(0,0,0,0.1); display: flex; align-items: center; z-index: 1000; }
+        .nav-container { width: 90%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-weight: 900; font-size: 1.8rem; text-decoration: none; color: #857200; }
+        .nav-links a { text-decoration: none; color: #555; font-weight: 700; margin-left: 25px; }
+        .nav-links a.active { color: #857200; border-bottom: 2px solid var(--js-yellow); }
+
+        .hero { background: var(--dark); color: var(--js-yellow); padding: 100px 20px; text-align: center; }
+        .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+        .content-block { background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); margin-bottom: 60px; }
+        
+        h2 { border-left: 8px solid var(--js-yellow); padding-left: 15px; }
+        .code-box { background: #2b2b2b; color: #f8f8f2; padding: 25px; border-radius: 12px; font-family: monospace; }
+        .logic-step { background: #fffbe6; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 4px solid #f7df1e; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">JS.LOGIC</a>
+            <div class="nav-links">
+                <a href="index.html">HTML</a>
+                <a href="css-path.html">CSS</a>
+                <a href="js-path.html" class="active">JS LOGIC</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>JavaScript: Bộ Não Của Trang Web</h1>
+        <p>Giúp trang web biết suy nghĩ, tính toán và trò chuyện với người dùng.</p>
+    </header>
+
+    <div class="container">
+        <div class="content-block">
+            <h2>1. JavaScript là gì?</h2>
+            <p>JavaScript (JS) là ngôn ngữ lập trình. Nó cho phép bạn thực hiện những việc như: Hiện thông báo khi bấm nút, đổi màu nền khi cuộn chuột, hoặc kiểm tra xem mật khẩu có đủ mạnh không.</p>
+            
+            <h3>Biến (Variables) - Nơi cất giữ dữ liệu</h3>
+            <p>Hãy tưởng tượng bạn có một chiếc hộp tên là <code>tenCuaToi</code> và bạn bỏ chữ "Gemini" vào đó.</p>
+            <div class="code-box">
+let tenCuaToi = "Gemini";
+alert("Chào mừng " + tenCuaToi); // Hiện thông báo: Chào mừng Gemini
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>2. DOM - Cầu nối với HTML</h2>
+            <p>Để JS có thể điều khiển HTML, nó sử dụng một "bản đồ" gọi là <strong>DOM</strong>.</p>
+            
+            <div class="logic-step">1. JS tìm thẻ HTML (ví dụ: cái nút).</div>
+            <div class="logic-step">2. JS lắng nghe hành động (ví dụ: người dùng click).</div>
+            <div class="logic-step">3. JS thực hiện lệnh (ví dụ: đổi màu trang web).</div>
+        </div>
+
+        <div class="content-block">
+            <h2>3. Event Loop - Cách JS làm việc</h2>
+            <p>JavaScript rất bận rộn. Nó có một "vòng lặp sự kiện" để đảm bảo mọi lệnh được thực hiện đúng thứ tự mà không bị treo máy.</p>
+            
+        </div>
+    </div>
+</body>
+</html>
