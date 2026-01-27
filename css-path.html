@@ -3,106 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Mastery - Thiết Kế Giao Diện</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>CSS Mastery - Thiết Kế Giao Diện Chuyên Nghiệp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-blue: #2965f1; --bg: #f0f7ff; --text: #2d3436; --code-bg: #1e1e1e; }
+        :root { 
+            --primary-blue: #2965f1; 
+            --bg: #f0f7ff; 
+            --text: #2d3436; 
+            --code-bg: #1e1e1e; 
+            --margin-color: #ff7675; 
+            --border-color: #fab1a0; 
+            --padding-color: #ffeaa7; 
+        }
+        
         body { margin: 0; padding-top: 70px; font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.8; background: var(--bg); }
         
+        /* Navigation */
         .navbar { position: fixed; top: 0; width: 100%; height: 70px; background: #fff; box-shadow: 0 2px 15px rgba(0,0,0,0.1); display: flex; align-items: center; z-index: 1000; }
         .nav-container { width: 90%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .nav-logo { font-weight: 900; font-size: 1.8rem; text-decoration: none; color: var(--primary-blue); }
         .nav-links a { text-decoration: none; color: #555; font-weight: 700; margin-left: 25px; transition: 0.3s; }
         .nav-links a.active { color: var(--primary-blue); border-bottom: 2px solid var(--primary-blue); }
 
+        /* Header */
         .hero { background: linear-gradient(135deg, #1a2a6c, #2965f1); color: white; padding: 100px 20px; text-align: center; }
+        
+        /* Layout */
         .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
         .content-block { background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); margin-bottom: 60px; }
         
-        h2 { font-size: 2rem; color: #1a2a6c; border-left: 8px solid var(--primary-blue); padding-left: 15px; }
-        .code-box { background: var(--code-bg); color: #75beff; padding: 25px; border-radius: 12px; font-family: monospace; margin: 20px 0; }
-        .concept-card { background: #eef9ff; padding: 25px; border-radius: 15px; border: 1px solid #d1e3ff; }
+        /* Typography & Components */
+        h2 { font-size: 2rem; color: #1a2a6c; border-left: 8px solid var(--primary-blue); padding-left: 15px; margin-bottom: 25px; }
+        .code-box { background: var(--code-bg); color: #75beff; padding: 25px; border-radius: 12px; font-family: 'Fira Code', monospace; margin: 20px 0; overflow-x: auto; white-space: pre; font-size: 0.9rem; }
+        .concept-card { background: #eef9ff; padding: 25px; border-radius: 15px; border: 1px solid #d1e3ff; margin: 20px 0; }
+
+        /* Box Model Visual */
+        .box-model-visual { margin: 40px 0; display: flex; justify-content: center; font-size: 0.8rem; }
+        .margin-box { background: var(--margin-color); padding: 30px; border: 2px dashed #d63031; border-radius: 10px; color: white; font-weight: bold; width: 100%; max-width: 500px; text-align: center; }
+        .border-box { background: var(--border-color); padding: 30px; border: 2px solid #e17055; color: #d63031; margin: 10px 0; }
+        .padding-box { background: var(--padding-color); padding: 30px; color: #e17055; }
+        .content-box { background: white; color: #2d3436; padding: 20px; border: 1px solid #ddd; }
+
+        /* Flexbox Demo */
+        .flex-demo-container { background: #2d3436; color: white; padding: 20px; border-radius: 15px; margin: 25px 0; }
+        .flex-row { display: flex; justify-content: space-around; align-items: center; border: 2px dashed #636e72; padding: 20px; border-radius: 10px; }
+        .flex-item { width: 60px; height: 60px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">CSS.STYLE</a>
+            <a href="#" class="nav-logo">CSS.STYLE</a>
             <div class="nav-links">
-                <a href="index.html">HTML</a>
-                <a href="css-path.html" class="active">CSS DESIGN</a>
-                <a href="js-path.html">JS LOGIC</a>
+                <a href="#">HTML</a>
+                <a href="#" class="active">CSS DESIGN</a>
+                <a href="#">JS LOGIC</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
         <h1>CSS: Biến Bản Vẽ Thành Tuyệt Tác</h1>
-        <p>Nếu HTML là xương cốt, CSS chính là làn da, mái tóc và bộ quần áo lộng lẫy của trang web.</p>
+        <p>Nếu HTML là xương cốt, CSS chính là làn da và bộ quần áo lộng lẫy của trang web.</p>
     </header>
 
     <div class="container">
         <div class="content-block">
-            <h2>0. Cách cài đặt CSS vào website</h2>
-            <p>Có 3 cách chính để máy tính hiểu được lệnh CSS của bạn:</p>
+            <h2>0. Cách cài đặt CSS</h2>
+            <p>Để trình duyệt hiểu được phong cách bạn muốn, hãy sử dụng một trong ba cách sau:</p>
             <div class="concept-card">
                 <ul>
-                    <li><strong>Cách 1 (External):</strong> Tạo file riêng <code>style.css</code>. Tốt nhất cho dự án lớn.</li>
-                    <li><strong>Cách 2 (Internal):</strong> Viết trong cặp thẻ <code>&lt;style&gt;</code> tại file HTML.</li>
-                    <li><strong>Cách 3 (Inline):</strong> Viết trực tiếp vào thuộc tính của thẻ HTML.</li>
+                    <li><strong>External:</strong> Liên kết file <code>.css</code> bên ngoài (Khuyên dùng).</li>
+                    <li><strong>Internal:</strong> Viết trong thẻ <code>&lt;style&gt;</code> ở đầu trang.</li>
+                    <li><strong>Inline:</strong> Viết trực tiếp vào thẻ HTML qua thuộc tính <code>style</code>.</li>
                 </ul>
             </div>
             <div class="code-box">
-/* Cách 1: Nối file ngoài (đặt trong thẻ &lt;head&gt;) */
-&lt;link rel="stylesheet" href="style.css"&gt;
-
-/* Cách 2: Viết tại chỗ (đặt trong thẻ &lt;head&gt;) */
-&lt;style&gt; body { background: #f0f0f0; } &lt;/style&gt;
-
-/* Cách 3: Viết vào thẻ (đặt trực tiếp ở thẻ HTML) */
-&lt;h1 style="color: blue;"&gt;Tiêu đề xanh&lt;/h1&gt;
-            </div>
+&lt;!-- Cách chuẩn nhất: External --&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;</div>
         </div>
 
         <div class="content-block">
-            <h2>1. CSS là gì?</h2>
-            <p>CSS giúp bạn chọn một thẻ HTML và ra lệnh cho nó phải trông như thế nào. Cấu trúc gồm: <strong>Selector</strong> (Chọn ai) và <strong>Declaration</strong> (Lệnh gì).</p>
+            <h2>1. Selector & Declaration</h2>
+            <p>CSS hoạt động theo cơ chế: <strong>Chọn một đối tượng</strong> và <strong>Ra lệnh thay đổi</strong>.</p>
             <div class="code-box">
-h1 { 
-  color: blue;        /* Màu chữ xanh */
-  font-size: 24px;    /* Cỡ chữ 24 pixel */
-  text-align: center; /* Căn giữa */
+selector {
+  property: value; /* Một lệnh thay đổi */
 }
-            </div>
+
+h1 {
+  color: #2965f1;  /* Đổi màu chữ */
+  font-size: 32px; /* Đổi kích thước */
+}</div>
         </div>
 
         <div class="content-block">
             <h2>2. Bí mật của "Chiếc hộp" (Box Model)</h2>
-            <p>Mọi thứ trên web đều là những chiếc hộp hình chữ nhật lồng nhau. Hiểu được điều này là bạn đã nắm 50% sức mạnh CSS.</p>
+            <p>Mọi thành phần trên web đều được trình duyệt xem là một chiếc hộp. Việc hiểu cách các lớp bao bọc nhau là chìa khóa để làm chủ bố cục.</p>
             
+            <div class="box-model-visual">
+                <div class="margin-box">
+                    MARGIN
+                    <div class="border-box">
+                        BORDER
+                        <div class="padding-box">
+                            PADDING
+                            <div class="content-box">CONTENT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             
-            
+
             <div class="concept-card">
+                <p><strong>Ghi nhớ nhanh:</strong></p>
                 <ul>
-                    <li><strong>Content:</strong> Nội dung (Chữ hoặc ảnh).</li>
-                    <li><strong>Padding:</strong> Khoảng đệm (Lớp bông bên trong hộp).</li>
-                    <li><strong>Border:</strong> Vỏ hộp (Đường viền).</li>
-                    <li><strong>Margin:</strong> Khoảng cách giữa các hộp (Để chúng không dính vào nhau).</li>
+                    <li><strong>Content:</strong> Chứa văn bản/hình ảnh.</li>
+                    <li><strong>Padding:</strong> Khoảng trống bên trong (giữa ruột và vỏ).</li>
+                    <li><strong>Border:</strong> Đường viền của hộp.</li>
+                    <li><strong>Margin:</strong> Khoảng cách bên ngoài để đẩy các hộp khác ra xa.</li>
                 </ul>
+                <p style="margin-top: 15px; border-top: 1px dotted #2965f1; padding-top: 15px;">
+                    💡 <strong>Pro Tip:</strong> Luôn dùng <code>box-sizing: border-box;</code> để padding không làm tăng chiều rộng thực tế của hộp.
+                </p>
             </div>
         </div>
 
         <div class="content-block">
-            <h2>3. Cách sắp xếp (Flexbox)</h2>
-            <p>Làm sao để đưa các nút bấm nằm ngang hàng? Ta dùng "phép thuật" Flexbox.</p>
-            
-            <div class="code-box">
-.container {
-  display: flex;
-  justify-content: space-between; /* Đẩy các phần tử ra xa nhau */
-}
+            <h2>3. Bố cục hiện đại với Flexbox</h2>
+            <p>Flexbox giúp bạn dàn hàng các phần tử và căn giữa chúng một cách cực kỳ dễ dàng, thay thế hoàn toàn các phương pháp cũ lỗi thời.</p>
+
+            <div class="flex-demo-container">
+                <div class="flex-row">
+                    <div class="flex-item" style="background: var(--primary-blue);">1</div>
+                    <div class="flex-item" style="background: #00cec9;">2</div>
+                    <div class="flex-item" style="background: #a29bfe;">3</div>
+                </div>
+                <div style="text-align: center; margin-top: 15px; font-size: 0.8rem; color: #b2bec3;">
+                    Hướng của trục chính (Main Axis)
+                </div>
             </div>
+
+            
+
+            <div class="concept-card">
+                <p><strong>Các lệnh Flexbox phổ biến nhất:</strong></p>
+                <div class="code-box" style="background: #fff; color: #2d3436; border: 1px solid #ddd; padding: 15px;">
+display: flex;             /* Kích hoạt chế độ Flex */
+justify-content: center;    /* Căn giữa theo chiều ngang */
+align-items: center;        /* Căn giữa theo chiều dọc */
+gap: 20px;                  /* Khoảng cách giữa các phần tử */</div>
+            </div>
+
+            <h3>Ứng dụng: Tạo Navbar trong 30 giây</h3>
+            <div class="code-box">
+.nav {
+  display: flex;
+  justify-content: space-between; /* Đẩy Logo sang trái, Menu sang phải */
+  align-items: center;
+}</div>
         </div>
     </div>
+
+    <footer style="text-align: center; padding: 60px; color: #636e72; background: #fff;">
+        © 2026 CSS ARCHITECT ACADEMY - BuildBuild by Văn Phúc.
+    </footer>
 </body>
 </html>
