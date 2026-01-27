@@ -24,8 +24,13 @@
         .nav-links a:hover, .nav-links a.active { color: var(--js-gold); border-bottom: 2px solid var(--js-yellow); }
 
         /* Header */
-        .hero { background: var(--dark-bg); color: var(--js-yellow); padding: 100px 20px; text-align: center; }
-        .hero h1 { font-size: 3.5rem; margin: 0; font-weight: 900; }
+        .hero { background: var(--dark-bg); color: var(--js-yellow); padding: 60px 20px; text-align: center; }
+        .hero h1 { font-size: 3rem; margin: 0; font-weight: 900; }
+
+        /* Video Section */
+        .video-section { background: #111; padding: 50px 0; display: flex; justify-content: center; }
+        .video-container { width: 90%; max-width: 850px; aspect-ratio: 16 / 9; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-radius: 15px; overflow: hidden; border: 2px solid #333; }
+        .video-container iframe { width: 100%; height: 100%; border: none; }
 
         /* Layout */
         .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
@@ -33,16 +38,12 @@
         
         h2 { font-size: 2rem; color: var(--dark-bg); border-left: 8px solid var(--js-yellow); padding-left: 15px; margin-bottom: 25px; }
         
-        /* Logic Cards */
         .logic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0; }
         .logic-card { background: #fff9db; border: 1px solid #f9eba0; padding: 25px; border-radius: 15px; transition: 0.3s; }
-        .logic-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(247, 223, 30, 0.2); }
         
         .code-box { background: var(--code-bg); color: #abb2bf; padding: 25px; border-radius: 12px; font-family: 'Fira Code', monospace; margin: 20px 0; overflow-x: auto; white-space: pre; font-size: 0.9rem; }
         
-        /* Live Demo Console */
         .console-mockup { background: #1e1e1e; border-radius: 10px; color: #d4d4d4; padding: 20px; font-family: 'Fira Code', monospace; font-size: 0.85rem; border-top: 25px solid #333; position: relative; }
-        .console-mockup::after { content: "DEBUGGER"; position: absolute; top: -20px; left: 15px; color: #888; font-size: 10px; font-weight: bold; }
         .cursor { display: inline-block; width: 8px; height: 15px; background: var(--js-yellow); animation: blink 1s infinite; margin-left: 5px; vertical-align: middle; }
 
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
@@ -53,17 +54,28 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">JS.RUNTIME</a>
             <div class="nav-links">
-                <a href="index.html">HTML CHO NGƯỜI MỚI</a>
-                <a href="css-path.html">CSS ARCHITECTURE</a>
-                <a href="js-path.html" class="active">JS RUNTIME</a>
+                <a href="index.html">HTML</a>
+                <a href="css-path.html">CSS</a>
+                <a href="js-path.html" class="active">JAVASCRIPT</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
         <h1>JavaScript: Linh Hồn Của Website</h1>
-        <p>Học cách điều khiển dữ liệu và tạo ra những trải nghiệm người dùng đầy mê hoặc.</p>
+        <p>Học thực chiến cùng Vũ Nguyễn Coder ngay bên dưới!</p>
     </header>
+
+    <section class="video-section">
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/NEgDBzHg9_c" 
+                title="Tự học lập trình Javascript cơ bản chỉ trong 1 giờ" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
 
     <div class="container">
         <div class="content-block">
@@ -122,7 +134,7 @@ button.addEventListener("click", () => {
 
         <div class="content-block" style="background: #282c34; color: #fff;">
             <h2 style="color: var(--js-yellow);">4. JavaScript Event Loop (Phía sau hậu trường)</h2>
-            <p style="opacity: 0.8;">JavaScript là đơn luồng (Single-threaded), nhưng nó có thể xử lý hàng nghìn yêu cầu cùng lúc nhờ cơ chế hàng đợi.</p>
+            <p style="opacity: 0.8;">JavaScript xử lý hàng nghìn yêu cầu cùng lúc nhờ cơ chế hàng đợi bất đồng bộ.</p>
             
             
 
