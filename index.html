@@ -3,169 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Mastery - Thiết Kế Giao Diện Chuyên Nghiệp</title>
+    <title>HTML5 Mastery - Từ Con Số 0</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --primary-blue: #2965f1; 
-            --bg: #f0f7ff; 
-            --text: #2d3436; 
-            --code-bg: #1e1e1e; 
-            --margin-color: #ff7675; 
-            --border-color: #fab1a0; 
-            --padding-color: #ffeaa7; 
-        }
+        :root { --primary: #E44D26; --secondary: #F16529; --dark: #1a1a1a; --text: #333; --code-bg: #282c34; }
+        body { margin: 0; padding-top: 70px; font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.8; background: #fafafa; }
         
-        body { margin: 0; padding-top: 70px; font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.8; background: var(--bg); }
-        
-        /* Navigation */
         .navbar { position: fixed; top: 0; width: 100%; height: 70px; background: #fff; box-shadow: 0 2px 15px rgba(0,0,0,0.1); display: flex; align-items: center; z-index: 1000; }
         .nav-container { width: 90%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { font-weight: 900; font-size: 1.8rem; text-decoration: none; color: var(--primary-blue); }
-        .nav-links a { text-decoration: none; color: #555; font-weight: 700; margin-left: 25px; transition: 0.3s; }
-        .nav-links a.active { color: var(--primary-blue); border-bottom: 2px solid var(--primary-blue); }
+        .nav-logo { font-weight: 900; font-size: 1.8rem; text-decoration: none; color: var(--primary); letter-spacing: -1px; }
+        .nav-links a { text-decoration: none; color: #555; font-weight: 700; margin-left: 25px; transition: 0.3s; font-size: 0.95rem; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
 
-        /* Header */
-        .hero { background: linear-gradient(135deg, #1a2a6c, #2965f1); color: white; padding: 100px 20px; text-align: center; }
-        
-        /* Layout */
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 100px 20px; text-align: center; }
+        .hero h1 { font-size: 3.5rem; margin: 0; font-weight: 900; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 20px auto; }
+
         .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
-        .content-block { background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); margin-bottom: 60px; }
+        .content-block { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); margin-bottom: 60px; }
         
-        /* Typography & Components */
-        h2 { font-size: 2rem; color: #1a2a6c; border-left: 8px solid var(--primary-blue); padding-left: 15px; margin-bottom: 25px; }
-        .code-box { background: var(--code-bg); color: #75beff; padding: 25px; border-radius: 12px; font-family: 'Fira Code', monospace; margin: 20px 0; overflow-x: auto; white-space: pre; font-size: 0.9rem; }
-        .concept-card { background: #eef9ff; padding: 25px; border-radius: 15px; border: 1px solid #d1e3ff; margin: 20px 0; }
+        .expert-section { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; margin-bottom: 40px; }
+        .reverse { grid-template-columns: 0.8fr 1.2fr; }
 
-        /* Box Model Visual */
-        .box-model-visual { margin: 40px 0; display: flex; justify-content: center; font-size: 0.8rem; }
-        .margin-box { background: var(--margin-color); padding: 30px; border: 2px dashed #d63031; border-radius: 10px; color: white; font-weight: bold; width: 100%; max-width: 500px; text-align: center; }
-        .border-box { background: var(--border-color); padding: 30px; border: 2px solid #e17055; color: #d63031; margin: 10px 0; }
-        .padding-box { background: var(--padding-color); padding: 30px; color: #e17055; }
-        .content-box { background: white; color: #2d3436; padding: 20px; border: 1px solid #ddd; }
+        h2 { font-size: 2rem; color: var(--dark); border-bottom: 4px solid var(--primary); display: inline-block; margin-bottom: 25px; }
+        h3 { color: var(--secondary); font-size: 1.4rem; margin-top: 30px; }
+        
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; width: 100%; border-radius: 15px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        /* Flexbox Demo */
-        .flex-demo-container { background: #2d3436; color: white; padding: 20px; border-radius: 15px; margin: 25px 0; }
-        .flex-row { display: flex; justify-content: space-around; align-items: center; border: 2px dashed #636e72; padding: 20px; border-radius: 10px; }
-        .flex-item { width: 60px; height: 60px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; }
+        .code-box { background: var(--code-bg); color: #abb2bf; padding: 25px; border-radius: 12px; font-family: 'Fira Code', monospace; position: relative; overflow-x: auto; margin: 20px 0; font-size: 0.9rem; white-space: pre; }
+        .code-box::before { content: "HTML EXAMPLE"; position: absolute; top: 0; right: 20px; font-size: 0.7rem; color: #5c6370; font-weight: bold; }
+
+        .image-area { background: #f0f0f0; border-radius: 15px; min-height: 250px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc; overflow: hidden; }
+        .image-area img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { margin-bottom: 15px; padding-left: 30px; position: relative; }
+        .feature-list li::before { content: "✔"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+
+        .html-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .html-table th, .html-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .html-table th { background-color: #fcece8; color: var(--primary); }
+
+        .roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .roadmap-item { border: 1px solid #444; padding: 20px; border-radius: 10px; transition: 0.3s; }
+        .roadmap-item:hover { border-color: var(--secondary); background: #252525; }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">CSS.STYLE</a>
+            <a href="index.html" class="nav-logo">HTML.CORE</a>
             <div class="nav-links">
-                <a href="index.html" class="active">HTML</a>
-                <a href="css-path.html">CSS DESIGN</a>
-                <a href="js-path.html">JS LOGIC</a>
+                <a href="index.html" class="active">HTML CHO NGƯỜI MỚI</a>
+                <a href="css-path.html">CSS ARCHITECTURE</a>
+                <a href="js-path.html">JS RUNTIME</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
-        <h1>CSS: Biến Bản Vẽ Thành Tuyệt Tác</h1>
-        <p>Nếu HTML là xương cốt, CSS chính là làn da và bộ quần áo lộng lẫy của trang web.</p>
+        <h1>HTML: Từ Con Số 0 Đến Chuyên Gia</h1>
+        <p>HTML không hề khó. Nó là ngôn ngữ giúp bạn nói cho trình duyệt biết: Đâu là tiêu đề, đâu là hình ảnh và đâu là đoạn văn.</p>
     </header>
 
     <div class="container">
         <div class="content-block">
-            <h2>0. Cách cài đặt CSS</h2>
-            <p>Để trình duyệt hiểu được phong cách bạn muốn, hãy sử dụng một trong ba cách sau:</p>
-            <div class="concept-card">
-                <ul>
-                    <li><strong>External:</strong> Liên kết file <code>.css</code> bên ngoài (Khuyên dùng).</li>
-                    <li><strong>Internal:</strong> Viết trong thẻ <code>&lt;style&gt;</code> ở đầu trang.</li>
-                    <li><strong>Inline:</strong> Viết trực tiếp vào thẻ HTML qua thuộc tính <code>style</code>.</li>
-                </ul>
+            <div class="expert-section">
+                <div>
+                    <h2>0. HTML là gì? (Khái niệm bình dân)</h2>
+                    <p><strong>HTML</strong> (HyperText Markup Language) là ngôn ngữ nền tảng của mọi trang web. Hãy tưởng tượng một tòa nhà cần một khung xương thép để đứng vững, thì website cũng cần HTML như vậy.</p>
+                    <ul class="feature-list">
+                        <li><strong>HTML:</strong> Là bộ khung gạch, cột nhà (Phần thô).</li>
+                        <li><strong>CSS:</strong> Làm đẹp nội thất.</li>
+                        <li><strong>JS:</strong> Hệ thống vận hành.</li>
+                    </ul>
+                </div>
+                <div class="image-area">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/5ujZ_HOCpME" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
+                </div>
             </div>
-            <div class="code-box">
-&lt;!-- Cách chuẩn nhất: External --&gt;
-&lt;link rel="stylesheet" href="style.css"&gt;</div>
-        </div>
-
-        <div class="content-block">
-            <h2>1. Selector & Declaration</h2>
-            <p>CSS hoạt động theo cơ chế: <strong>Chọn một đối tượng</strong> và <strong>Ra lệnh thay đổi</strong>.</p>
-            <div class="code-box">
-selector {
-  property: value; /* Một lệnh thay đổi */
-}
-
-h1 {
-  color: #2965f1;  /* Đổi màu chữ */
-  font-size: 32px; /* Đổi kích thước */
-}</div>
-        </div>
-
-        <div class="content-block">
-            <h2>2. Bí mật của "Chiếc hộp" (Box Model)</h2>
-            <p>Mọi thành phần trên web đều được trình duyệt xem là một chiếc hộp. Việc hiểu cách các lớp bao bọc nhau là chìa khóa để làm chủ bố cục.</p>
             
-            <div class="box-model-visual">
-                <div class="margin-box">
-                    MARGIN
-                    <div class="border-box">
-                        BORDER
-                        <div class="padding-box">
-                            PADDING
-                            <div class="content-box">CONTENT</div>
+            <h3>Giải mã "Bộ khung" cơ bản:</h3>
+            <table class="html-table">
+                <tr><th>Dòng mã</th><th>Ý nghĩa thực tế</th></tr>
+                <tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Khai báo chuẩn HTML5 mới nhất.</td></tr>
+                <tr><td><code>&lt;html lang="vi"&gt;</code></td><td>Gốc rễ của trang web (Tiếng Việt).</td></tr>
+                <tr><td><code>&lt;head&gt;</code></td><td>Chứa thông tin cấu hình và tiêu đề ẩn.</td></tr>
+                <tr><td><code>&lt;body&gt;</code></td><td>Nơi chứa toàn bộ nội dung hiển thị cho người dùng.</td></tr>
+            </table>
+        </div>
+
+        <div class="content-block">
+            <div class="expert-section">
+                <div>
+                    <h2>1. Phẫu thuật cấu trúc DOM Tree</h2>
+                    <p>Khi trình duyệt đọc code của bạn, nó nhìn theo <strong>Cây gia đình (Hierarchy)</strong>.</p>
+                    
+                    <ul class="feature-list">
+                        <li><strong>Parent (Cha):</strong> Thẻ bao bọc bên ngoài.</li>
+                        <li><strong>Child (Con):</strong> Thẻ nằm bên trong.</li>
+                        <li><strong>Sibling (Anh em):</strong> Các thẻ nằm cùng cấp.</li>
+                    </ul>
+                </div>
+                <div class="image-area">
+                    <img src="https://uploads.onecompiler.io/44bsspxrc/44bssq9s5/skibidi-toilet-thumbnail.jpg" alt="Minh họa cấu trúc">
+                </div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>2. Những "Viên Gạch" Phổ Biến Nhất</h2>
+            <p>Đừng cố học thuộc lòng hàng trăm thẻ. Hãy bắt đầu với 5 loại thẻ "quyền lực" nhất này:</p>
+            
+            <div class="expert-section reverse">
+                <div class="image-area">
+                    <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=500&q=60" alt="Code Illustration">
+                </div>
+                <div>
+                    <ul class="feature-list">
+                        <li><code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code>: Tiêu đề từ lớn đến nhỏ.</li>
+                        <li><code>&lt;p&gt;</code>: Đoạn văn bản thông thường.</li>
+                        <li><code>&lt;a href="..."&gt;</code>: Liên kết (Hyperlink).</li>
+                        <li><code>&lt;img src="..."&gt;</code>: Chèn ảnh minh họa.</li>
+                        <li><code>&lt;div&gt;</code> & <code>&lt;span&gt;</code>: Thẻ bao bọc để chia bố cục.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Ví dụ code thực tế:</h3>
+            <div class="code-box">
+&lt;div class="profile-card"&gt;
+    &lt;h2&gt;Nguyễn Văn A&lt;/h2&gt;
+    &lt;p&gt;Lập trình viên Fullstack tương lai.&lt;/p&gt;
+    &lt;a href="https://github.com"&gt;Xem Portfolio&lt;/a&gt;
+&lt;/div&gt;</div>
+        </div>
+
+        <div class="content-block" style="background: #1e1e1e; color: #fff; border: 1px solid #333;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="color: #4ec9b0; border-bottom: 2px solid #4ec9b0; margin: 0;">3. HTML Interactive Lab</h2>
+                <span style="background: #333; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: #ce9178;">● Live Preview</span>
+            </div>
+            
+            <p style="opacity: 0.8;">Đừng chỉ đọc, hãy thử chỉnh sửa mã nguồn bên dưới và quan sát sự thay đổi của "vũ trụ web" ngay lập tức.</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+                <div style="background: #2d2d2d; border-radius: 10px; padding: 15px; border: 1px solid #444;">
+                    <div style="color: #858585; font-size: 0.7rem; margin-bottom: 10px; font-weight: bold; letter-spacing: 1px;">EDITOR.HTML</div>
+                    <div class="code-box" style="margin: 0; background: transparent; padding: 0; line-height: 1.5; color: #9cdcfe;">
+<span style="color: #6a9955;">&lt;!-- Thử đổi chữ h1 thành tên bạn --&gt;</span>
+&lt;<span style="color: #569cd6;">div</span> <span style="color: #9cdcfe;">style</span>=<span style="color: #ce9178;">"text-align: center;"</span>&gt;
+  &lt;<span style="color: #569cd6;">h1</span>&gt;Hello World!&lt;/<span style="color: #569cd6;">h1</span>&gt;
+  &lt;<span style="color: #569cd6;">button</span> <span style="color: #9cdcfe;">style</span>=<span style="color: #ce9178;">"padding: 10px 20px; background: #E44D26; border: none; color: white; border-radius: 5px; cursor: pointer;"</span>&gt;
+    Click Me!
+  &lt;/<span style="color: #569cd6;">button</span>&gt;
+&lt;/<span style="color: #569cd6;">div</span>&gt;
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 10px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #444;">
+                    <div style="background: #eee; padding: 8px 15px; display: flex; gap: 5px;">
+                        <span style="width: 10px; height: 10px; background: #ff5f56; border-radius: 50%;"></span>
+                        <span style="width: 10px; height: 10px; background: #ffbd2e; border-radius: 50%;"></span>
+                        <span style="width: 10px; height: 10px; background: #27c93f; border-radius: 50%;"></span>
+                    </div>
+                    <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; color: #333; padding: 20px;">
+                        <div style="text-align: center;">
+                            <h1 style="margin-top: 0; font-size: 1.5rem;">Hello World!</h1>
+                            <button style="padding: 10px 20px; background: #E44D26; border: none; color: white; border-radius: 5px;">Click Me!</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            
-
-            <div class="concept-card">
-                <p><strong>Ghi nhớ nhanh:</strong></p>
-                <ul>
-                    <li><strong>Content:</strong> Chứa văn bản/hình ảnh.</li>
-                    <li><strong>Padding:</strong> Khoảng trống bên trong (giữa ruột và vỏ).</li>
-                    <li><strong>Border:</strong> Đường viền của hộp.</li>
-                    <li><strong>Margin:</strong> Khoảng cách bên ngoài để đẩy các hộp khác ra xa.</li>
-                </ul>
-                <p style="margin-top: 15px; border-top: 1px dotted #2965f1; padding-top: 15px;">
-                    💡 <strong>Pro Tip:</strong> Luôn dùng <code>box-sizing: border-box;</code> để padding không làm tăng chiều rộng thực tế của hộp.
-                </p>
-            </div>
-        </div>
-
-        <div class="content-block">
-            <h2>3. Bố cục hiện đại với Flexbox</h2>
-            <p>Flexbox giúp bạn dàn hàng các phần tử và căn giữa chúng một cách cực kỳ dễ dàng, thay thế hoàn toàn các phương pháp cũ lỗi thời.</p>
-
-            <div class="flex-demo-container">
-                <div class="flex-row">
-                    <div class="flex-item" style="background: var(--primary-blue);">1</div>
-                    <div class="flex-item" style="background: #00cec9;">2</div>
-                    <div class="flex-item" style="background: #a29bfe;">3</div>
+            <div style="margin-top: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div style="background: rgba(78, 201, 176, 0.1); border-left: 3px solid #4ec9b0; padding: 15px;">
+                    <h4 style="margin: 0; color: #4ec9b0;">Visual Hierarchy</h4>
+                    <p style="font-size: 0.85rem; margin-bottom: 0;">Sử dụng kích thước và màu sắc để điều hướng mắt người dùng.</p>
                 </div>
-                <div style="text-align: center; margin-top: 15px; font-size: 0.8rem; color: #b2bec3;">
-                    Hướng của trục chính (Main Axis)
+                <div style="background: rgba(206, 145, 120, 0.1); border-left: 3px solid #ce9178; padding: 15px;">
+                    <h4 style="margin: 0; color: #ce9178;">Atomic Design</h4>
+                    <p style="font-size: 0.85rem; margin-bottom: 0;">Xây dựng từ những thành phần nhỏ nhất (button, input) đến các khối lớn.</p>
                 </div>
             </div>
-
-            <div class="concept-card">
-                <p><strong>Các lệnh Flexbox phổ biến nhất:</strong></p>
-                <div class="code-box" style="background: #fff; color: #2d3436; border: 1px solid #ddd; padding: 15px;">
-display: flex;             /* Kích hoạt chế độ Flex */
-justify-content: center;    /* Căn giữa theo chiều ngang */
-align-items: center;        /* Căn giữa theo chiều dọc */
-gap: 20px;                  /* Khoảng cách giữa các phần tử */</div>
-            </div>
-
-            <h3>Ứng dụng: Tạo Navbar trong 30 giây</h3>
-            <div class="code-box">
-.nav {
-  display: flex;
-  justify-content: space-between; /* Đẩy Logo sang trái, Menu sang phải */
-  align-items: center;
-}</div>
         </div>
     </div>
-
-    <footer style="text-align: center; padding: 60px; color: #636e72; background: #fff;">
-        © 2026 CSS ARCHITECT ACADEMY - Build by Văn Phúc.
-    </footer>
 </body>
 </html>
