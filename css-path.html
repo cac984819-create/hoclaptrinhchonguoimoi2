@@ -43,7 +43,28 @@
 
     <div class="container">
         <div class="content-block">
-            <h2>1. CSS là gì?</h2>
+            <h2>1. Cách cài đặt CSS</h2>
+            <p>Có 3 cách phổ biến để nhúng CSS vào trang HTML của bạn:</p>
+            <div class="concept-card">
+                <ul>
+                    <li><strong>External:</strong> Liên kết file .css bên ngoài (Dùng thẻ <code>&lt;link&gt;</code>).</li>
+                    <li><strong>Internal:</strong> Viết trực tiếp vào file HTML (Dùng thẻ <code>&lt;style&gt;</code>).</li>
+                    <li><strong>Inline:</strong> Viết trực tiếp vào thuộc tính style của thẻ HTML.</li>
+                </ul>
+            </div>
+            <div class="code-box">
+/* Ví dụ External CSS */
+&lt;link rel="stylesheet" href="style.css"&gt;
+
+/* Ví dụ Internal CSS */
+&lt;style&gt;
+  h1 { color: red; }
+&lt;/style&gt;
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>2. CSS là gì?</h2>
             <p>CSS giúp bạn chọn một thẻ HTML và ra lệnh cho nó phải trông như thế nào. Cấu trúc gồm: <strong>Selector</strong> (Chọn ai) và <strong>Declaration</strong> (Lệnh gì).</p>
             <div class="code-box">
 h1 { 
@@ -55,8 +76,10 @@ h1 {
         </div>
 
         <div class="content-block">
-            <h2>2. Bí mật của "Chiếc hộp" (Box Model)</h2>
+            <h2>3. Bí mật của "Chiếc hộp" (Box Model)</h2>
             <p>Mọi thứ trên web đều là những chiếc hộp hình chữ nhật lồng nhau. Hiểu được điều này là bạn đã nắm 50% sức mạnh CSS.</p>
+            
+            
             
             <div class="concept-card">
                 <ul>
@@ -69,7 +92,7 @@ h1 {
         </div>
 
         <div class="content-block">
-            <h2>3. Cách sắp xếp (Flexbox)</h2>
+            <h2>4. Cách sắp xếp (Flexbox)</h2>
             <p>Làm sao để đưa các nút bấm nằm ngang hàng? Ta dùng "phép thuật" Flexbox.</p>
             
             <div class="code-box">
