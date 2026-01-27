@@ -31,13 +31,13 @@
         .code-box { background: var(--code-bg); color: #abb2bf; padding: 25px; border-radius: 12px; font-family: 'Fira Code', monospace; position: relative; overflow-x: auto; margin: 20px 0; font-size: 0.9rem; }
         .code-box::before { content: "HTML CODE"; position: absolute; top: 0; right: 20px; font-size: 0.7rem; color: #5c6370; font-weight: bold; }
 
-        .image-area { background: #f0f0f0; border-radius: 15px; min-height: 250px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc; }
+        .image-area { background: #f0f0f0; border-radius: 15px; min-height: 250px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc; overflow: hidden; }
+        .image-area img { width: 100%; height: 100%; object-fit: cover; }
         
         .feature-list { list-style: none; padding: 0; }
         .feature-list li { margin-bottom: 15px; padding-left: 30px; position: relative; }
         .feature-list li::before { content: "✔"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
 
-        /* Mới: Style cho bảng giải thích thẻ */
         .html-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
         .html-table th, .html-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         .html-table th { background-color: #fcece8; color: var(--primary); }
@@ -63,15 +63,22 @@
     <div class="container">
         
         <div class="content-block">
-            <h2>0. HTML là gì? (Khái niệm bình dân)</h2>
-            <p><strong>HTML</strong> (HyperText Markup Language) là <strong>ngôn ngữ đánh dấu siêu văn bản</strong>. Hãy tưởng tượng bạn đang xây một ngôi nhà:</p>
-            <ul>
-                <li><strong>HTML:</strong> Là bộ khung gạch, cột nhà, tường bao (Phần thô).</li>
-                <li><strong>CSS:</strong> Là sơn tường, gạch men, nội thất (Làm đẹp).</li>
-                <li><strong>JS:</strong> Là hệ thống điện, nước, cửa tự động (Hành động).</li>
-            </ul>
+            <div class="expert-section">
+                <div>
+                    <h2>0. HTML là gì? (Khái niệm bình dân)</h2>
+                    <p><strong>HTML</strong> (HyperText Markup Language) là ngôn ngữ nền tảng của mọi trang web. Hãy tưởng tượng Skibidi Toilet cũng cần một khung xương thép để đứng vững, thì website cũng cần HTML như vậy.</p>
+                    <ul>
+                        <li><strong>HTML:</strong> Là bộ khung gạch, cột nhà (Phần thô).</li>
+                        <li><strong>CSS:</strong> Làm đẹp nội thất.</li>
+                        <li><strong>JS:</strong> Hệ thống vận hành.</li>
+                    </ul>
+                </div>
+                <div class="image-area">
+                    <img src="https://uploads.onecompiler.io/44bsspxrc/44bssq9s5/skibidi-toilet-thumbnail.jpg" alt="Skibidi Toilet">
+                </div>
+            </div>
             
-            <h3>Giải mã "Bộ khung" cơ bản bạn vừa thấy:</h3>
+            <h3>Giải mã "Bộ khung" cơ bản:</h3>
             <table class="html-table">
                 <tr>
                     <th>Dòng mã</th>
@@ -79,19 +86,19 @@
                 </tr>
                 <tr>
                     <td><code>&lt;!DOCTYPE html&gt;</code></td>
-                    <td>Lời chào: "Chào trình duyệt, tôi là một file HTML5 đời mới nhất đây!"</td>
+                    <td>Khai báo chuẩn HTML5.</td>
                 </tr>
                 <tr>
                     <td><code>&lt;html lang="vi"&gt;</code></td>
-                    <td>Cái túi lớn nhất chứa mọi thứ. <code>lang="vi"</code> báo hiệu đây là tiếng Việt.</td>
+                    <td>Gốc rễ của trang web (Tiếng Việt).</td>
                 </tr>
                 <tr>
                     <td><code>&lt;head&gt;</code></td>
-                    <td>Phần "Não bộ": Chứa các cài đặt ẩn, tiêu đề trang (hiển thị trên tab trình duyệt).</td>
+                    <td>Chứa thông tin cấu hình và tiêu đề.</td>
                 </tr>
                 <tr>
                     <td><code>&lt;body&gt;</code></td>
-                    <td>Phần "Thân thể": Tất cả những gì bạn viết ở đây sẽ hiện ra trên màn hình cho người dùng xem.</td>
+                    <td>Nơi chứa toàn bộ nội dung hiển thị.</td>
                 </tr>
             </table>
         </div>
@@ -100,78 +107,20 @@
             <div class="expert-section">
                 <div>
                     <h2>1. Phẫu thuật cấu trúc DOM Tree</h2>
-                    <p>Khi trình duyệt đọc code của bạn, nó không nhìn từng dòng mà nhìn theo <strong>Cây gia đình</strong>.</p>
-                    
+                    <p>Khi trình duyệt đọc code của bạn, nó nhìn theo <strong>Cây gia đình</strong>.</p>
                     <ul class="feature-list">
                         <li><strong>Parent (Cha):</strong> Thẻ bao bọc bên ngoài.</li>
                         <li><strong>Child (Con):</strong> Thẻ nằm bên trong.</li>
-                        <li><strong>Sibling (Anh em):</strong> Các thẻ nằm cùng cấp với nhau.</li>
-                    </ul>
-                </div>
-                <div>
-                    <p></p><img src="https://uploads.onecompiler.io/44bsspxrc/44bssq9s5/skibidi-toilet-thumbnail.jpg"></p>
-                    <p style="color:#666; font-size:0.9rem;">Minh họa cấu trúc lồng nhau</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-block">
-            <h2>2. Những "Viên gạch" quan trọng nhất</h2>
-            <p>Để tạo ra một đoạn code cơ bản, bạn chỉ cần nhớ các thẻ sau:</p>
-            
-            <div class="grid-detail" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div style="background: #fff9f0; padding: 20px; border-radius: 10px;">
-                    <h3 style="margin-top:0;">Thẻ nội dung</h3>
-                    <ul>
-                        <li><code>&lt;h1&gt;</code>: Tiêu đề lớn nhất (Tên bài viết).</li>
-                        <li><code>&lt;p&gt;</code>: Một đoạn văn bản.</li>
-                        <li><code>&lt;img&gt;</code>: Chèn một tấm ảnh.</li>
-                        <li><code>&lt;a&gt;</code>: Tạo một đường link để bấm vào.</li>
-                    </ul>
-                </div>
-                <div style="background: #f0f7ff; padding: 20px; border-radius: 10px;">
-                    <h3 style="margin-top:0;">Thẻ bố cục (Semantic)</h3>
-                    <ul>
-                        <li><code>&lt;header&gt;</code>: Phần đầu trang (Chứa logo, menu).</li>
-                        <li><code>&lt;main&gt;</code>: Nội dung chính của trang.</li>
-                        <li><code>&lt;footer&gt;</code>: Phần chân trang (Liên hệ, bản quyền).</li>
-                    </ul>
-                </div>
-            </div>
-            
-            
-
-            <h3>Thử sức tự viết code:</h3>
-            <div class="code-box">
-&lt;!-- Hãy thử copy đoạn này vào notepad và lưu tên là index.html --&gt;
-&lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Chào mừng tới trang web của tôi&lt;/h1&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        &lt;p&gt;Đây là dòng chữ đầu tiên tôi tự tay lập trình!&lt;/p&gt;
-        &lt;a href="https://google.com"&gt;Bấm vào đây để tới Google&lt;/a&gt;
-    &lt;/main&gt;
-&lt;/body&gt;
-            </div>
-        </div>
-
-        <div class="content-block">
-            <div class="expert-section">
-                <div>
-                    <h2>3. Kỹ năng của người làm Web tử tế</h2>
-                    <p>Đừng chỉ làm web cho người mắt sáng. Hãy làm web cho cả người khiếm thính hoặc khiếm thị bằng cách:</p>
-                    <ul class="feature-list">
-                        <li><strong>Thuộc tính Alt:</strong> Luôn viết <code>&lt;img src="anh.jpg" alt="Mô tả tấm ảnh này"&gt;</code> để máy tính có thể đọc cho người mù nghe ảnh nói về cái gì.</li>
-                        <li><strong>Tiêu đề logic:</strong> Đừng nhảy từ <code>h1</code> xuống <code>h3</code>, hãy đi theo thứ tự.</li>
+                        <li><strong>Sibling (Anh em):</strong> Các thẻ nằm cùng cấp.</li>
                     </ul>
                 </div>
                 <div class="image-area">
-                    
+                    <img src="https://uploads.onecompiler.io/44bsspxrc/44bssq9s5/skibidi-toilet-thumbnail.jpg" alt="Minh họa cấu trúc">
                 </div>
             </div>
         </div>
-    </div>
+
+        </div>
 
     <footer style="text-align: center; padding: 60px; background: var(--dark); color: white; margin-top: 100px;">
         <p style="font-weight: bold; font-size: 1.2rem;">© 2026 WEB ARCHITECT ACADEMY</p>
