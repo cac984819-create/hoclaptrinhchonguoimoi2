@@ -48,7 +48,7 @@
 
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* Style bổ sung cho AI Section & Chatbot (Không ảnh hưởng code cũ) */
+        /* Style bổ sung cho AI Section & Chatbot */
         .ai-section { border: 3px solid var(--js-yellow); background: #fffef0; }
         .ai-textarea { width: 100%; height: 120px; padding: 15px; border-radius: 10px; border: 1px solid #ddd; font-family: 'Fira Code', monospace; box-sizing: border-box; }
         .ai-btn { background: var(--dark-bg); color: var(--js-yellow); padding: 12px 30px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 10px; }
@@ -101,8 +101,7 @@
                     <p>Dùng cho giá trị cố định (ví dụ: ngày sinh, tên người dùng, số Pi).</p>
                 </div>
             </div>
-            <div class="code-box">
-const user = "Văn Phúc";
+            <div class="code-box">const user = "Văn Phúc";
 let score = 100;
 score = score + 10; // Cập nhật điểm thành 110</div>
         </div>
@@ -120,8 +119,7 @@ score = score + 10; // Cập nhật điểm thành 110</div>
                 </ol>
             </div>
 
-            <div class="code-box">
-// Ví dụ: Bấm nút để đổi màu nền
+            <div class="code-box">// Ví dụ: Bấm nút để đổi màu nền
 const button = document.querySelector(".btn-magic");
 button.addEventListener("click", () => {
     document.body.style.backgroundColor = "skyblue";
@@ -143,7 +141,6 @@ button.addEventListener("click", () => {
         <div class="content-block" style="background: #282c34; color: #fff;">
             <h2 style="color: var(--js-yellow);">4. JavaScript Event Loop (Phía sau hậu trường)</h2>
             <p style="opacity: 0.8;">JavaScript xử lý hàng nghìn yêu cầu cùng lúc nhờ cơ chế hàng đợi bất đồng bộ.</p>
-
             <div class="logic-grid">
                 <div style="border: 1px solid #555; padding: 15px; border-radius: 10px;">
                     <h4 style="color: #61dafb;">Stack</h4>
@@ -185,7 +182,6 @@ button.addEventListener("click", () => {
     <script>
         const API_KEY = "AIzaSyDvrrd1vAy7f5F5E7rKtP7YxieGMddH7FA";
 
-        // Hàm gọi API dùng chung cho cả 2 tính năng
         async function fetchAI(prompt) {
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
             const response = await fetch(url, {
@@ -198,7 +194,6 @@ button.addEventListener("click", () => {
             return data.candidates[0].content.parts[0].text;
         }
 
-        // 1. Logic cho phần giải thích code
         async function askGemini() {
             const code = document.getElementById('js-input').value;
             const btn = document.getElementById('btn-ai');
@@ -214,7 +209,6 @@ button.addEventListener("click", () => {
             finally { btn.innerText = "Hỏi Trợ Lý AI"; }
         }
 
-        // 2. Logic cho Chatbot nổi
         function toggleChat() {
             const win = document.getElementById('chat-window');
             win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
