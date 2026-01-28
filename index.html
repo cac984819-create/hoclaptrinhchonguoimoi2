@@ -191,5 +191,140 @@
             </div>
         </div>
     </div>
+<div id="ai-chatbot-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: 'Inter', sans-serif;">
+    <button onclick="toggleChat()" id="chat-trigger" style="background: #f7df1e; border: none; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-size: 24px;">
+        💬
+    </button>
+
+    <div id="chat-window" style="display: none; width: 350px; height: 500px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: absolute; bottom: 80px; right: 0; flex-direction: column; overflow: hidden; border: 1px solid #eee;">
+        <div style="background: #20232a; color: #f7df1e; padding: 15px; font-weight: bold; display: flex; justify-content: space-between;">
+            <span>🤖 Trợ Lý Lập Trình</span>
+            <button onclick="toggleChat()" style="background: none; border: none; color: white; cursor: pointer;">✕</button>
+        </div>
+        
+        <div id="chat-messages" style="flex: 1; padding: 15px; overflow-y: auto; background: #f9f9f9; display: flex; flex-direction: column; gap: 10px;">
+            <div style="background: #eee; padding: 10px; border-radius: 10px; align-self: flex-start; max-width: 80%; font-size: 0.9rem;">
+                Chào Phúc! Mình là trợ lý AI. Bạn cần hỏi gì về HTML, CSS hay JavaScript không?
+            </div>
+        </div>
+
+        <div style="padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px;">
+            <input type="text" id="user-msg" placeholder="Nhập câu hỏi..." style="flex: 1; border: 1px solid #ddd; padding: 8px; border-radius: 5px; outline: none;">
+            <button onclick="sendToAI()" style="background: #f7df1e; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold;">Gửi</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleChat() {
+        const win = document.getElementById('chat-window');
+        win.style.display = win.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    async function sendToAI() {
+        const input = document.getElementById('user-msg');
+        const container = document.getElementById('chat-messages');
+        const message = input.value.trim();
+        
+        if (!message) return;
+
+        // Hiển thị tin nhắn của Phúc
+        container.innerHTML += `<div style="background: #007bff; color: white; padding: 10px; border-radius: 10px; align-self: flex-end; max-width: 80%; font-size: 0.9rem;">${message}</div>`;
+        input.value = '';
+        container.scrollTop = container.scrollHeight;
+
+        try {
+            const API_KEY = "MÃ_API_CỦA_BẠN"; // Dán mã API vào đây
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: "Bạn là một trợ lý học tập vui vẻ trên trang web của Văn Phúc. Hãy trả lời ngắn gọn về lập trình: " + message }] }]
+                })
+            });
+
+            const data = await response.json();
+            const aiText = data.candidates[0].content.parts[0].text;
+
+            // Hiển thị tin nhắn của AI
+            container.innerHTML += `<div style="background: #eee; padding: 10px; border-radius: 10px; align-self: flex-start; max-width: 80%; font-size: 0.9rem;">${aiText}</div>`;
+            container.scrollTop = container.scrollHeight;
+        } catch (e) {
+            container.innerHTML += `<div style="color: red; font-size: 0.8rem;">Lỗi kết nối rồi Phúc ơi!</div>`;
+        }
+    }
+    
+    // Gửi bằng phím Enter
+    document.getElementById('user-msg').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') sendToAI();
+    });
+</script><div id="ai-chatbot-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: 'Inter', sans-serif;">
+    <button onclick="toggleChat()" id="chat-trigger" style="background: #f7df1e; border: none; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-size: 24px;">
+        💬
+    </button>
+
+    <div id="chat-window" style="display: none; width: 350px; height: 500px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: absolute; bottom: 80px; right: 0; flex-direction: column; overflow: hidden; border: 1px solid #eee;">
+        <div style="background: #20232a; color: #f7df1e; padding: 15px; font-weight: bold; display: flex; justify-content: space-between;">
+            <span>🤖 Trợ Lý Lập Trình</span>
+            <button onclick="toggleChat()" style="background: none; border: none; color: white; cursor: pointer;">✕</button>
+        </div>
+        
+        <div id="chat-messages" style="flex: 1; padding: 15px; overflow-y: auto; background: #f9f9f9; display: flex; flex-direction: column; gap: 10px;">
+            <div style="background: #eee; padding: 10px; border-radius: 10px; align-self: flex-start; max-width: 80%; font-size: 0.9rem;">
+                Chào bạnbạn! Mình là trợ lý AI. Bạn cần hỏi gì về HTML, CSS hay JavaScript không?
+            </div>
+        </div>
+
+        <div style="padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px;">
+            <input type="text" id="user-msg" placeholder="Nhập câu hỏi..." style="flex: 1; border: 1px solid #ddd; padding: 8px; border-radius: 5px; outline: none;">
+            <button onclick="sendToAI()" style="background: #f7df1e; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold;">Gửi</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleChat() {
+        const win = document.getElementById('chat-window');
+        win.style.display = win.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    async function sendToAI() {
+        const input = document.getElementById('user-msg');
+        const container = document.getElementById('chat-messages');
+        const message = input.value.trim();
+        
+        if (!message) return;
+
+        // Hiển thị tin nhắn của Phúc
+        container.innerHTML += `<div style="background: #007bff; color: white; padding: 10px; border-radius: 10px; align-self: flex-end; max-width: 80%; font-size: 0.9rem;">${message}</div>`;
+        input.value = '';
+        container.scrollTop = container.scrollHeight;
+
+        try {
+            const API_KEY = "AIzaSyDvrrd1vAy7f5F5E7rKtP7YxieGMddH7FA"; // Dán mã API vào đây
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: "Bạn là một trợ lý học tập vui vẻ trên trang web của Văn Phúc. Hãy trả lời ngắn gọn về lập trình: " + message }] }]
+                })
+            });
+
+            const data = await response.json();
+            const aiText = data.candidates[0].content.parts[0].text;
+
+            // Hiển thị tin nhắn của AI
+            container.innerHTML += `<div style="background: #eee; padding: 10px; border-radius: 10px; align-self: flex-start; max-width: 80%; font-size: 0.9rem;">${aiText}</div>`;
+            container.scrollTop = container.scrollHeight;
+        } catch (e) {
+            container.innerHTML += `<div style="color: red; font-size: 0.8rem;">Lỗi kết nối rồi Phúc ơi!</div>`;
+        }
+    }
+    
+    // Gửi bằng phím Enter
+    document.getElementById('user-msg').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') sendToAI();
+    });
+</script>
 </body>
 </html>
