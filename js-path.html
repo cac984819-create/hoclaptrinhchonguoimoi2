@@ -180,6 +180,81 @@ button.addEventListener("click", () => {
     </footer>
 
     <script>
+        <script>
+    // GIỮ NGUYÊN API KEY CỦA PHÚC
+    const API_KEY = "AIzaSyDvrrd1vAy7f5F5E7rKtP7YxieGMddH7FA";
+
+    // HÀM GỌI API ĐÃ SỬA LỖI ĐƯỜNG DẪN (URL)
+    async function fetchAI(prompt) {
+        // Cập nhật URL đầy đủ để tránh lỗi "Not Found"
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+        
+        const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: prompt }] }]
+            })
+        });
+
+        const data = await response.json();
+        
+        // Kiểm tra nếu có lỗi từ Google API
+        if (data.error) {
+            console.error("Lỗi API:", data.error.message);
+            throw new Error(data.error.message);
+        }
+        
+        return data.candidates[0].content.parts[0].text;
+    }
+
+    // 1. Logic cho phần "AI Trợ Giảng" (Ô ở giữa trang)
+    async function askGemini() {
+        const code = document.getElementById('js-input').value;
+        const btn = document.getElementById('btn-ai');
+        const output = document.getElementById('ai-output');
+        const text = document.getElementById('ai-text');
+        
+        if(!code) return;
+        btn.innerText = "Đang phân tích...";
+        
+        try {
+            const res = await fetchAI("Giải thích đoạn code này cho người mới học: " + code);
+            output.style.display = "block";
+            text.innerText = res;
+        } catch (e) { 
+            alert("Lỗi AI: " + e.message); 
+        } finally { 
+            btn.innerText = "Hỏi Trợ Lý AI"; 
+        }
+    }
+
+    // 2. Logic cho "Chatbot Nổi" (Góc màn hình)
+    function toggleChat() {
+        const win = document.getElementById('chat-window');
+        win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    async function sendChat() {
+        const input = document.getElementById('chat-input');
+        const content = document.getElementById('chat-content');
+        
+        if(!input.value.trim()) return;
+        
+        const msg = input.value;
+        content.innerHTML += `<div style="text-align:right; margin-bottom:10px;"><b>Bạn:</b> ${msg}</div>`;
+        input.value = '';
+        content.scrollTop = content.scrollHeight;
+
+        try {
+            const res = await fetchAI(msg);
+            content.innerHTML += `<div style="text-align:left; margin-bottom:10px; color:#2c3e50;"><b>AI:</b> ${res}</div>`;
+        } catch (e) { 
+            content.innerHTML += `<div style="color:red; margin-bottom:10px;">Lỗi: ${e.message}</div>`; 
+        }
+        content.scrollTop = content.scrollHeight;
+    }
+</script>
         const API_KEY = "AIzaSyDvrrd1vAy7f5F5E7rKtP7YxieGMddH7FA";
 
         async function fetchAI(prompt) {
