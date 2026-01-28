@@ -47,6 +47,12 @@
         .cursor { display: inline-block; width: 8px; height: 15px; background: var(--js-yellow); animation: blink 1s infinite; margin-left: 5px; vertical-align: middle; }
 
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* --- CODE AI MỚI THÊM VÀO STYLE --- */
+        .ai-section { border: 3px solid var(--js-yellow); background: #fffef0; }
+        .ai-textarea { width: 100%; height: 120px; padding: 15px; border-radius: 10px; border: 1px solid #ddd; font-family: 'Fira Code', monospace; box-sizing: border-box; }
+        .ai-btn { background: var(--dark-bg); color: var(--js-yellow); padding: 12px 30px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        #ai-output { margin-top: 20px; padding: 20px; background: white; border-left: 5px solid #2ecc71; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
@@ -100,8 +106,6 @@ score = score + 10; // Cập nhật điểm thành 110</div>
         <div class="content-block">
             <h2>2. Thao tác DOM (Cầu nối HTML - JS)</h2>
             <p>Đây là cách JS "chạm" vào HTML để đổi màu, đổi chữ hoặc ẩn hiện phần tử.</p>
-            
-            
 
             <div class="logic-card" style="background: #f3e5f5; border-color: #e1bee7;">
                 <h4>Quy trình 3 bước thần thánh:</h4>
@@ -135,8 +139,6 @@ button.addEventListener("click", () => {
         <div class="content-block" style="background: #282c34; color: #fff;">
             <h2 style="color: var(--js-yellow);">4. JavaScript Event Loop (Phía sau hậu trường)</h2>
             <p style="opacity: 0.8;">JavaScript xử lý hàng nghìn yêu cầu cùng lúc nhờ cơ chế hàng đợi bất đồng bộ.</p>
-            
-            
 
             <div class="logic-grid">
                 <div style="border: 1px solid #555; padding: 15px; border-radius: 10px;">
@@ -149,10 +151,58 @@ button.addEventListener("click", () => {
                 </div>
             </div>
         </div>
+
+        <div class="content-block ai-section">
+            <h2>🤖 AI Trợ Giảng Thông Minh</h2>
+            <p>Phúc dán code vào đây, AI sẽ giải thích cho Phúc nhé!</p>
+            <textarea id="js-input" class="ai-textarea" placeholder="Nhập code JS của bạn vào đây..."></textarea>
+            <button onclick="askGemini()" id="btn-ai" class="ai-btn">Hỏi Trợ Lý AI</button>
+            <div id="ai-output">
+                <strong>💡 Giải thích chi tiết:</strong>
+                <div id="ai-text" style="margin-top: 10px;"></div>
+            </div>
+        </div>
     </div>
 
     <footer style="text-align: center; padding: 60px; color: #636e72; background: #fff;">
         © 2026 JS RUNTIME ACADEMY - Build by Văn Phúc.
     </footer>
+
+    <script>
+        async function askGemini() {
+            const code = document.getElementById('js-input').value;
+            const btn = document.getElementById('btn-ai');
+            const outputDiv = document.getElementById('ai-output');
+            const textDiv = document.getElementById('ai-text');
+
+            if(!code) return alert("Phúc ơi, nhập code đã nhé!");
+
+            btn.innerText = "Đang suy nghĩ...";
+            btn.disabled = true;
+
+            try {
+                // Thay API_KEY của bạn vào đây
+                const API_KEY = "AIzaSyDvrrd1vAy7f5F5E7rKtP7YxieGMddH7FA";
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: "Hãy giải thích đoạn code JavaScript này một cách dễ hiểu nhất cho người mới bắt đầu: " + code }] }]
+                    })
+                });
+
+                const data = await response.json();
+                const result = data.candidates[0].content.parts[0].text;
+
+                outputDiv.style.display = "block";
+                textDiv.innerText = result;
+            } catch (e) {
+                alert("Lỗi rồi! Phúc kiểm tra lại API Key nhé.");
+            } finally {
+                btn.innerText = "Hỏi Trợ Lý AI";
+                btn.disabled = false;
+            }
+        }
+    </script>
 </body>
 </html>
